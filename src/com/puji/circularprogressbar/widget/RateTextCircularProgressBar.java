@@ -34,6 +34,22 @@ public class RateTextCircularProgressBar extends FrameLayout implements
 		OnProgressChangeListener {
 
 	/**
+	 * 当计时器计时完成时通过实现此接口的onComplete来执行计时器操作完成后的相应操作
+	 * 
+	 * @author Kevin
+	 * 
+	 */
+	public interface onCompleteProgressListener {
+		public void onComplete();
+	};
+
+	private onCompleteProgressListener mCompleteProgressListener;
+
+	public void setCompleteProgressListener(onCompleteProgressListener listener) {
+		this.mCompleteProgressListener = listener;
+	}
+
+	/**
 	 * 倒计时还未结束的标志
 	 */
 	private static final int RUNING = 1;
@@ -106,6 +122,9 @@ public class RateTextCircularProgressBar extends FrameLayout implements
 				break;
 
 			case COMPLEMENTED:
+				if (mCompleteProgressListener != null) {
+					mCompleteProgressListener.onComplete();
+				}
 				break;
 			default:
 				break;
