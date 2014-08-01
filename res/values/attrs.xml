@@ -8,6 +8,7 @@
         <attr name="outCircleColor" format="color" />
         <attr name="rateTextSize" format="dimension"/>
         <attr name="rateTextColor" format="color"/>
+        <attr name="circleColor" format="reference|color"/>
     </declare-styleable>
 
 </resources>

@@ -28,6 +28,11 @@ public class CircularProgressBar extends View {
 	private int mProgress = 30;
 
 	/**
+	 * 内圆笔刷
+	 */
+	private Paint mCirclePaint = new Paint();
+
+	/**
 	 * 内圆环笔刷
 	 */
 	private Paint mOutCirclePaint = new Paint();
@@ -47,12 +52,17 @@ public class CircularProgressBar extends View {
 	private float mInnerCircleSize;
 
 	/**
+	 * 内圆颜色
+	 */
+	private int mCircleColor;
+	/**
 	 * 内圆环颜色
 	 */
 	private int mInnerCircleColor;
 	/**
 	 * 外圆环颜色
 	 */
+
 	private int mOutCircleColor;
 
 	/**
@@ -238,8 +248,17 @@ public class CircularProgressBar extends View {
 		mOutCircleColor = typedArray.getColor(
 				R.styleable.CircularProgressBar_outCircleColor,
 				Color.parseColor("#ff00ff"));
+		
 		typedArray.recycle();
 
+	}
+
+	public int getCircleColor() {
+		return mCircleColor;
+	}
+
+	public void setCircleColor(int mCircleColor) {
+		this.mCircleColor = mCircleColor;
 	}
 
 	@Override
@@ -251,6 +270,13 @@ public class CircularProgressBar extends View {
 		int radius = halfWidth < halfHeight ? halfWidth : halfHeight;
 		float halfStrokeWidth = mOutCircleSize / 2;
 
+		mCirclePaint.setDither(true);
+		mCirclePaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+		mCirclePaint.setAntiAlias(true);
+		mCirclePaint.setStyle(Paint.Style.FILL);
+		mCirclePaint.setColor(mCircleColor);
+		canvas.drawCircle(halfWidth, halfWidth, radius - mOutCircleSize
+				- mInnerCircleSize, mCirclePaint);
 		// 画内圆环
 		mInnerCirclePaint.setDither(true);
 		mInnerCirclePaint.setFlags(Paint.ANTI_ALIAS_FLAG);

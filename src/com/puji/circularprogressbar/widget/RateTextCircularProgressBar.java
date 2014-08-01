@@ -131,6 +131,7 @@ public class RateTextCircularProgressBar extends FrameLayout implements
 			}
 		};
 	};
+	private int mCircleColor;
 
 	/**
 	 * 得到外圆环大小
@@ -337,6 +338,10 @@ public class RateTextCircularProgressBar extends FrameLayout implements
 		mRateTextColor = typedArray.getColor(
 				R.styleable.CircularProgressBar_rateTextColor,
 				Color.parseColor("#000000"));
+		mCircleColor = typedArray.getColor(
+				R.styleable.CircularProgressBar_circleColor,
+				Color.parseColor("#000000"));
+
 		typedArray.recycle();
 		init();
 	}
@@ -354,6 +359,7 @@ public class RateTextCircularProgressBar extends FrameLayout implements
 		mCircularProgressBar.setInnerCircleSize(mInnerCircleSize);
 		mCircularProgressBar.setOutCircleColor(mOutCircleColor);
 		mCircularProgressBar.setInnerCircleColor(mInnerCircleColor);
+		mCircularProgressBar.setCircleColor(mCircleColor);
 
 		mRateText = new TextView(getContext());
 		mRateText.setLayoutParams(lp);

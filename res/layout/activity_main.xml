@@ -15,6 +15,7 @@
         customer:outCircleColor="#FFD700"
         customer:outCircleSize="10dp"
         customer:rateTextColor="#4682B4"
-        customer:rateTextSize="12sp" />
+        customer:rateTextSize="12sp"
+        customer:circleColor="#ff00ff"/>
 
 </RelativeLayout>
